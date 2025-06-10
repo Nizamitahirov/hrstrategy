@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HR Department: 2025 Strategic Overview</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #6D6AFE;
+            --secondary-color: #434099;
+            --background-color: #f8f9fe;
+            --card-background: #ffffff;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+            --border-radius: 16px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            --color-strength: #27ae60;
+            --color-challenge: #e67e22;
+        }
+
+        /* GENERAL STYLES */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .main-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .main-header h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        /* TABS NAVIGATION */
+        .tabs {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 40px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .tab-button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-light);
+            background-color: var(--card-background);
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .tab-button.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+            box-shadow: 0 5px 15px rgba(109, 106, 254, 0.4);
+        }
+
+        /* TAB CONTENT PANES */
+        .tab-pane {
+            display: none;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        .tab-pane.active {
+            display: block;
+        }
+        
+        .pane-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .pane-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin: 0;
+        }
+
+        .pane-header .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            margin-top: 10px;
+        }
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* --- STYLES FOR PAGE 1: ACHIEVEMENTS --- */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        .kpi-card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .kpi-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(109, 106, 254, 0.2);
+        }
+        .kpi-card.highlight { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
+        .kpi-card.highlight .icon { background-color: rgba(255, 255, 255, 0.2); }
+        .kpi-card.highlight h3, .kpi-card.highlight li { color: white; }
+        .kpi-card.highlight li::before { color: white; }
+        .kpi-card .icon { width: 60px; height: 60px; border-radius: 50%; background-color: #eef2ff; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px; }
+        .kpi-card h3 { font-size: 1.4rem; font-weight: 600; margin: 0 0 15px 0; color: var(--secondary-color); }
+        .kpi-card .achievements { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-dark); flex-grow: 1; }
+        .kpi-card .achievements li { padding-left: 25px; position: relative; margin-bottom: 12px; line-height: 1.5; }
+        .kpi-card .achievements li::before { content: '\f00c'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--primary-color); position: absolute; left: 0; top: 2px; }
+
+        /* --- STYLES FOR PAGE 2: BUSINESS IMPACT --- */
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 30px;
+        }
+        .impact-card { background: var(--card-background); border-radius: var(--border-radius); box-shadow: var(--shadow); padding: 30px; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .impact-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(109, 106, 254, 0.2); }
+        .impact-card.highlight { background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; }
+        .impact-card.highlight .icon { background-color: rgba(255, 255, 255, 0.2); }
+        .impact-card.highlight h3, .impact-card.highlight li { color: white; }
+        .impact-card.highlight li::before { color: white; }
+        .impact-card .icon { width: 60px; height: 60px; border-radius: 50%; background-color: #eef2ff; display: flex; justify-content: center; align-items: center; font-size: 1.8rem; color: var(--primary-color); margin-bottom: 20px; }
+        .impact-card h3 { font-size: 1.4rem; font-weight: 600; margin: 0 0 15px 0; color: var(--secondary-color); }
+        .impact-card .impacts { list-style: none; padding: 0; margin: 0; font-size: 0.95rem; color: var(--text-dark); flex-grow: 1; }
+        .impact-card .impacts li { padding-left: 25px; position: relative; margin-bottom: 12px; line-height: 1.5; }
+        .impact-card .impacts li::before { content: '\f5af'; font-family: 'Font Awesome 6 Free'; font-weight: 900; color: var(--primary-color); position: absolute; left: 0; top: 2px; }
+
+        /* --- STYLES FOR PAGE 3: ROADMAP --- */
+        .roadmap-container { display: flex; gap: 40px; justify-content: center; }
+        .roadmap-column { background-color: var(--card-background); border-radius: 12px; box-shadow: var(--shadow); padding: 30px; width: 100%; max-width: 600px; display: flex; flex-direction: column; gap: 20px; }
+        .roadmap-column .column-header { text-align: center; padding-bottom: 20px; border-bottom: 2px solid #f0f0f0; }
+        .strengths .column-header h3 { color: var(--color-strength); }
+        .challenges .column-header h3 { color: var(--color-challenge); }
+        .column-header h3 { font-size: 1.8rem; font-weight: 600; margin: 0; }
+        .column-header i { margin-right: 10px; }
+        .roadmap-item { background-color: #fdfdff; border-radius: 8px; padding: 20px; border-left: 5px solid; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+        .roadmap-item:hover { transform: scale(1.03); box-shadow: 0 10px 20px rgba(0,0,0,0.08); }
+        .strengths .roadmap-item { border-color: var(--color-strength); }
+        .challenges .roadmap-item { border-color: var(--color-challenge); }
+        .roadmap-item h4 { font-size: 1.1rem; font-weight: 600; margin: 0 0 8px 0; }
+        .strengths .roadmap-item h4 { color: var(--color-strength); }
+        .challenges .roadmap-item h4 { color: var(--color-challenge); }
+        .roadmap-item p { font-size: 0.9rem; line-height: 1.6; color: var(--text-light); margin: 0; }
+        
+        /* RESPONSIVENESS */
+        @media (max-width: 992px) {
+            .roadmap-container { flex-direction: column; align-items: center; }
+            .roadmap-column { max-width: 100%; }
+        }
+        @media (min-width: 1200px) {
+            .impact-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (max-width: 768px) {
+            body { padding: 20px 10px; }
+            .main-header h1 { font-size: 2rem; }
+            .pane-header h2 { font-size: 1.8rem; }
+            .tab-button { font-size: 0.9rem; padding: 10px 20px; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="main-header">
+            <h1>HR Department: 2025 Strategic Overview</h1>
+        </header>
+
+        <!-- Tab Navigation -->
+        <ul class="tabs" role="tablist">
+            <li><button class="tab-button active" role="tab" aria-selected="true" aria-controls="achievements-pane" data-tab-target="#achievements-pane">1. Key Achievements</button></li>
+            <li><button class="tab-button" role="tab" aria-selected="false" aria-controls="impact-pane" data-tab-target="#impact-pane">2. Business Impact</button></li>
+            <li><button class="tab-button" role="tab" aria-selected="false" aria-controls="roadmap-pane" data-tab-target="#roadmap-pane">3. Strategic Roadmap</button></li>
+        </ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content">
+
+            <!-- ============================================= -->
+            <!-- ==         PAGE 1: ACHIEVEMENTS            == -->
+            <!-- ============================================= -->
+            <div id="achievements-pane" class="tab-pane active" role="tabpanel" aria-labelledby="achievements-tab">
+                <div class="pane-header">
+                    <h2>Structure KPIs: What We've Achieved</h2>
+                    <p class="subtitle">Summary of HR Department's key accomplishments for the 2025 action plan.</p>
+                </div>
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
+                        <h3>Structure & Cost Optimization</h3>
+                        <ul class="achievements">
+                            <li>Job analysis completed and structural changes implemented for Commercial, Finance, and Property departments.</li>
+                            <li>A systematic framework for organizational design and change management has been defined.</li>
+                            <li>Achieved ~20% reduction in mobile call expenses and optimized other administrative costs.</li>
+                            <li>Restructured several key teams (Data, InfoSec, Investigation) for better efficiency.</li>
+                        </ul>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Performance & Bonus System</h3>
+                        <ul class="achievements">
+                            <li>The core concept and processes for the new Performance Management system are designed.</li>
+                            <li>New KPI-based bonus systems successfully launched for Cashiers, Wolt, Real Estate, and other teams.</li>
+                            <li>A comprehensive company-wide grading project was initiated and job role mapping completed with WTW.</li>
+                            <li>Store Managers' performance evaluation tool created and deployed.</li>
+                        </ul>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="icon"><i class="fa-solid fa-cogs"></i></div>
+                        <h3>Digitization & Process Automation</h3>
+                        <ul class="achievements">
+                            <li>Redesigned and automated key processes like Business Trip Requests and Vacation Management.</li>
+                            <li>Developed and launched new web-based tools for Planogram QR, Headcount Planning, and Encashment.</li>
+                            <li>LMS foundation established, including server setup and needs definition.</li>
+                            <li>Significant progress in developing new applications for Uniform Distribution and Working Schedules.</li>
+                        </ul>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                        <h3>Employee Development Programs</h3>
+                        <ul class="achievements">
+                            <li>Enhanced the onboarding process with welcome kits and optimized meetings.</li>
+                            <li>Launched new development programs for Store Managers, Area Managers, and SMAs.</li>
+                            <li>Completed key leadership trainings, including a new handbook for Store Managers and DNA training.</li>
+                            <li>Established an ongoing process for assessing learning needs across departments.</li>
+                        </ul>
+                    </div>
+                    <div class="kpi-card">
+                        <div class="icon"><i class="fa-solid fa-heart"></i></div>
+                        <h3>Organizational Culture & Engagement</h3>
+                        <ul class="achievements">
+                            <li>Annual people survey completed to gather employee feedback.</li>
+                            <li>A wide range of ongoing engagement events are being held to build strong teams and leadership community.</li>
+                            <li>"My Bravo Story" EVP project initiated to strengthen employer brand.</li>
+                            <li>Customer-centricity transformation program launched with posters and trainings.</li>
+                        </ul>
+                    </div>
+                    <div class="kpi-card highlight">
+                        <div class="icon"><i class="fa-solid fa-clipboard-check"></i></div>
+                        <h3>Policy & Business Procedures</h3>
+                        <ul class="achievements">
+                            <li>New Recruitment Policy and Job Description Management Procedure prepared and formalized.</li>
+                            <li>Review of existing and development of new HR policies is actively in progress.</li>
+                            <li>Established a Disciplinary Committee to ensure fair and collegial decision-making.</li>
+                            <li>Travel Policy and Mobile Usage Policy updated and implemented.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ============================================= -->
+            <!-- ==         PAGE 2: BUSINESS IMPACT         == -->
+            <!-- ============================================= -->
+            <div id="impact-pane" class="tab-pane" role="tabpanel" aria-labelledby="impact-tab">
+                <div class="pane-header">
+                    <h2>Structure Activities: How We Affect the Business</h2>
+                    <p class="subtitle">Translating HR initiatives into tangible business value and strategic impact.</p>
+                </div>
+                 <div class="impact-grid">
+                    <div class="impact-card highlight">
+                        <div class="icon"><i class="fa-solid fa-sack-dollar"></i></div>
+                        <h3>Driving Financial Performance & Productivity</h3>
+                        <ul class="impacts">
+                            <li>Optimizing operational costs across administrative, travel, and mobile usage, directly contributing to bottom-line savings.</li>
+                            <li>Increasing workforce productivity through systematic job analysis and structural redesign in key departments.</li>
+                            <li>Ensuring competitive and sustainable compensation by implementing a new grading structure and salary benchmarks.</li>
+                            <li>Boosting sales-driven roles' performance with new KPI-based bonus systems for cashiers, real estate, and more.</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card">
+                        <div class="icon"><i class="fa-solid fa-rocket"></i></div>
+                        <h3>Enhancing Operational Excellence</h3>
+                        <ul class="impacts">
+                            <li>Automating core HR and administrative processes to reduce manual work, minimize errors, and accelerate decision-making.</li>
+                            <li>Standardizing business procedures (SOPs) to ensure consistency, improve compliance, and simplify operations across all locations.</li>
+                            <li>Enabling faster new store roll-outs through efficient mass recruitment and streamlined onboarding, directly supporting business expansion.</li>
+                            <li>Improving internal service quality by digitizing tools for vacation, uniform distribution, and other employee requests.</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card">
+                        <div class="icon"><i class="fa-solid fa-sitemap"></i></div>
+                        <h3>Strengthening Organizational Design & Planning</h3>
+                        <ul class="impacts">
+                            <li>Developing agile organizational design frameworks that allow the company to adapt its structure quickly to market changes.</li>
+                            <li>Implementing headcount planning systems to align staffing with sales forecasts, preventing overstaffing and maximizing ROI.</li>
+                            <li>Defining clear career roadmaps and promotion policies to structure internal growth and increase transparency.</li>
+                            <li>Building a robust succession plan for key roles to secure critical expertise and mitigate leadership gaps for long-term stability.</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card">
+                        <div class="icon"><i class="fa-solid fa-users-gear"></i></div>
+                        <h3>Building Future-Ready Talent & Leadership</h3>
+                        <ul class="impacts">
+                            <li>Creating a sustainable leadership pipeline through targeted development programs (SM, AM) for long-term business continuity.</li>
+                            <li>Reducing external hiring costs and increasing retention by cultivating internal talent through mentorship and training.</li>
+                            <li>Attracting the next generation of professionals through structured internship programs, securing future capabilities.</li>
+                            <li>Equipping the workforce with necessary skills through e-learning platforms (LMS) and needs-based training.</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card">
+                        <div class="icon"><i class="fa-solid fa-handshake-angle"></i></div>
+                        <h3>Fostering a High-Performance Culture</h3>
+                        <ul class="impacts">
+                            <li>Boosting employee engagement and morale through recognition programs (Bravo League), leading to lower turnover and higher service quality.</li>
+                            <li>Driving a customer-centric mindset across the organization with targeted training, directly impacting customer satisfaction and loyalty.</li>
+                            <li>Strengthening the employer brand (EVP) to attract top-tier talent and become an employer of choice in a competitive market.</li>
+                            <li>Fostering collaboration and innovation that drives business growth from within through regular engagement events and communication.</li>
+                        </ul>
+                    </div>
+                    <div class="impact-card">
+                        <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Mitigating Risk & Ensuring Compliance</h3>
+                        <ul class="impacts">
+                            <li>Reducing legal exposure by aligning all internal processes with labor legislation and establishing a formal disciplinary committee.</li>
+                            <li>Ensuring a safe working environment for all employees and customers through rigorous HSE monitoring, inspections, and training.</li>
+                            <li>Implementing robust policies for asset management, data security, and contract governance to protect company resources.</li>
+                            <li>Guaranteeing fair and consistent treatment of all employees through standardized HR procedures, minimizing workplace disputes.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- ============================================= -->
+            <!-- ==         PAGE 3: STRATEGIC ROADMAP       == -->
+            <!-- ============================================= -->
+            <div id="roadmap-pane" class="tab-pane" role="tabpanel" aria-labelledby="roadmap-tab">
+                 <div class="pane-header">
+                    <h2>Structure Roadmap</h2>
+                    <p class="subtitle">Our Proven Strengths and Key Strategic Challenges for the Future.</p>
+                </div>
+                <div class="roadmap-container">
+                    <div class="roadmap-column strengths">
+                        <div class="column-header">
+                            <h3><i class="fa-solid fa-circle-check"></i> What We Do Well</h3>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Agile Recruitment & Expansion Support</h4>
+                            <p>We consistently meet aggressive hiring targets for new stores (e.g., Ismayilli, Shusha), demonstrating our capacity to directly support rapid business growth.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>High-Impact Employee Engagement</h4>
+                            <p>A well-established calendar of diverse engagement activities and communication channels keeps morale high and fosters a strong leadership community.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Solid HR Operations & Execution</h4>
+                            <p>Core operational tasks, including reorganizations, salary adjustments, and compliance with regulations, are managed effectively and on time.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Proactive HSE & Safety Management</h4>
+                            <p>Our systematic approach to safety, including regular inspections, and incident tracking, has built a strong foundation for a safe workplace.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Foundation of Digital Transformation</h4>
+                            <p>We have successfully initiated and completed several key automation projects, proving our capability to digitize processes.</p>
+                        </div>
+                    </div>
+                    <div class="roadmap-column challenges">
+                        <div class="column-header">
+                            <h3><i class="fa-solid fa-compass"></i> Challenges & Strategic Focus</h3>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Deepening Automation & System Integration</h4>
+                            <p>Our challenge is to move from standalone tools to a fully integrated HR ecosystem (e.g., full 1C automation, LMS) to unlock maximum efficiency.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Evolving Performance Management</h4>
+                            <p>The goal is to transition from a conceptual framework to a fully embedded system that links performance directly to development and rewards.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Finalizing & Embedding Policies</h4>
+                            <p>The strategic focus is on finalizing, communicating, and ensuring consistent application of all new policies across the organization.</p>
+                        </div>
+                         <div class="roadmap-item">
+                            <h4>Leveraging HR Analytics for Strategy</h4>
+                            <p>We collect valuable data. The next step is to build analytics capabilities to transform this data into predictive insights that inform strategic business decisions.</p>
+                        </div>
+                        <div class="roadmap-item">
+                            <h4>Building a Formal Career Architecture</h4>
+                            <p>A key priority is to design and implement clear, formal career paths and competency models for structured internal growth and retention.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for Tab Functionality
+        const tabs = document.querySelectorAll('.tab-button');
+        const tabPanes = document.querySelectorAll('.tab-pane');
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Get the target pane from the data-attribute
+                const target = document.querySelector(tab.dataset.tabTarget);
+
+                // Deactivate all panes and tabs
+                tabPanes.forEach(pane => {
+                    pane.classList.remove('active');
+                });
+                tabs.forEach(t => {
+                    t.classList.remove('active');
+                    t.setAttribute('aria-selected', 'false');
+                });
+
+                // Activate the clicked tab and its corresponding pane
+                tab.classList.add('active');
+                tab.setAttribute('aria-selected', 'true');
+                target.classList.add('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
